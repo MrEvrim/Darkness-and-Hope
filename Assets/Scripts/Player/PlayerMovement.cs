@@ -5,25 +5,21 @@ public class PlayerMovement : MonoBehaviour
     public float walkSpeed = 2f;
     public float runSpeed = 5f;
     public float mouseSensitivity = 100f;
-    public Transform playerCamera;
 
     private bool isIdle = true;
     private bool isWalking = false;
     private bool isRunning = false;
 
     private Animator animator;
-    private float xRotation = 0f;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
     {
         HandleMovement();
-        HandleCameraRotation();
         UpdateAnimator();
     }
 
@@ -78,19 +74,6 @@ public class PlayerMovement : MonoBehaviour
             isRunning = false;
         }
     }
-
-    private void HandleCameraRotation()
-    {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-
-        playerCamera.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        transform.Rotate(Vector3.up * mouseX);
-    }
-
     private void UpdateAnimator()
     {
         animator.SetBool("isIdle", isIdle);
