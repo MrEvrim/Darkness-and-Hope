@@ -2,8 +2,8 @@
 
 public class PuzzleKey : MonoBehaviour
 {
-    public Animator animator; // Animatör bileşenine referans
-    public string triggerName = "KeyTriggered"; // Animasyonu tetiklemek için kullanılan trigger adı
+    public Animator animator; // Animator bileşenine referans
+    public string triggerName = "GateOpen"; // Animasyonu tetiklemek için trigger ismi
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,6 +13,19 @@ public class PuzzleKey : MonoBehaviour
             // Animasyonu tetikle
             animator.SetTrigger("GateOpen");
             Debug.Log("Anahtar bulundu, animasyon tetiklendi.");
+
+            // GateSoundEffect script'ine eriş
+            GateSoundEffect gateSoundEffect = GetComponent<GateSoundEffect>();
+            // Eğer script varsa
+            if (gateSoundEffect != null)
+            {
+                // GateSoundEffect script'indeki PlayGateOpenSound metodunu çağır
+                gateSoundEffect.PlayGateOpenSound();
+            }
+            else
+            {
+                Debug.LogWarning("GateSoundEffect script'i bulunamadı.");
+            }
         }
     }
 }
