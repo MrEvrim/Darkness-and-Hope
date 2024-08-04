@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundEffectTrigger : MonoBehaviour
 {
@@ -19,7 +20,10 @@ public class SoundEffectTrigger : MonoBehaviour
         audioSource.volume = volume;
         audioSource.loop = loop;
         audioSource.playOnAwake = playOnAwake;
-        if (playOnAwake)
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
         {
             audioSource.Play();
         }
@@ -27,6 +31,7 @@ public class SoundEffectTrigger : MonoBehaviour
 
     public void Play()
     {
+        
         audioSource.Play();
         if (destroyAfterPlay)
         {

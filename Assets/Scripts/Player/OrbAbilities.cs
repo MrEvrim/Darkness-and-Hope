@@ -38,17 +38,17 @@ public class OrbAbilities: MonoBehaviour
                     }
                     break;
                 case 1:
-                    orbLight.intensity = 2.5f;
+                    orbLight.intensity = 2.8f;
                     break;
                 case 2:
-                    playerMovement.walkSpeed = 9f;
+                    playerMovement.walkSpeed = 17f;
                     break;
             }
         }
         if (Input.GetMouseButtonUp(0))
         {
             playerMovement.walkSpeed = 2f;
-            orbLight.intensity = 1f;
+            orbLight.intensity = 0.2f;
         }
     }
 }

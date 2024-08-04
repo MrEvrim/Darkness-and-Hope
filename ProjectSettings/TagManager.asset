@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - "BUB\u0130RKEYD\u0130R"
+  - canPickUp
   layers:
   - Default
   - TransparentFX
