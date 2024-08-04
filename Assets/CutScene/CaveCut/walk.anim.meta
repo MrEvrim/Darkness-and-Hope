@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< Updated upstream:Assets/CutScene/CaveCut/walk.anim.meta
 guid: 6626bf0b923824b4c8d5e98d01c9ebec
 NativeFormatImporter:
+========
+guid: 2ff3f00e935dded47893c17bcb061395
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> Stashed changes:Assets/CutScene/CaveCut.meta
   externalObjects: {}
   mainObjectFileID: 7400000
   userData: 

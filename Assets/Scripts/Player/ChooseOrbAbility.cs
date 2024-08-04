@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ChooseOrbAbility : MonoBehaviour
 {
-    private PlayerMovement playerMovement;
     private FPSMouseLook fpsMouseLook;
     public GameObject AbilitySelectCanvas;
+    AudioSource audioSource;
     void Start()
     {
-        playerMovement = GetComponent<PlayerMovement>();
+        audioSource = transform.GetChild(4).GetChild(1).GetComponent<AudioSource>();
         fpsMouseLook = transform.GetChild(4).GetComponent<FPSMouseLook>();
     }
     void Update()
@@ -19,20 +19,18 @@ public class ChooseOrbAbility : MonoBehaviour
 
     void ChooseAbility()
     {
-        if(Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1))
         {
-            playerMovement.enabled = false;
             fpsMouseLook.enabled = false;
             AbilitySelectCanvas.SetActive(true);
             Cursor.lockState = CursorLockMode.Confined;
         }
         if(Input.GetMouseButtonUp(1))
         {
-            playerMovement.enabled=true;
+            audioSource.Play();
             fpsMouseLook.enabled = true;
             AbilitySelectCanvas.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
-            Debug.Log(SelectedOrb.SelectedAbilityIndex);
         }
     }
 }
